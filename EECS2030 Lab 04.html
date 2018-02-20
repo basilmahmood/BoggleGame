@@ -1,0 +1,715 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0075)https://www.eecs.yorku.ca/course_archive/2017-18/F/2030/labs/lab4/lab4.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="author" content="Burton Ma">
+  <title>EECS2030 Lab 04</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #d2d4d5;
+      color: #303030;
+      font: 12pt Verdana, Tahoma, Sans-Serif;
+      text-align: center;
+    }
+
+    p {
+      margin: 0 0 16px;
+      line-height: 1.8;
+    }
+
+    p.tt {
+      font: "Courier New", Courier, monospace;
+    }
+
+    a {
+      color: #00f;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #88f;
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-size: 160%;
+      margin: 0 0 8px;
+    }
+
+    h2 {
+      font-size: 140%;
+      margin: 0 0 8px;
+    }
+
+    h3 {
+      font-size: 120%;
+      margin: 0 0 8px;
+    }
+
+    ol {
+      padding: 0;
+      margin-left: 3em;
+      margin-bottom: 1ex;
+    }
+
+    ul {
+      padding: 0;
+      margin-left: 3em;
+      margin-bottom: 1ex;
+    }
+
+    li {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+      line-height: 1.8;
+    }
+
+    code {
+      font-weight: bold;
+      font-size: 12pt;
+    }
+
+    table {
+      margin-left: 0em;
+      margin-bottom: 2ex;
+    }
+
+    td {
+      padding-top: 0.5em;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+      padding-bottom: 0.5em;
+    }
+
+    .btt {
+      font-size: 120%;
+      font-weight: bold;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    td.btt {
+      font-size: 110%;
+      font-weight: bold;
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    pre {
+      font-size: 120%;
+      font-weight: bold;
+      line-height: 120%;
+      margin: 1em;
+      padding-top: 0.2em;
+      padding-bottom: 0.2em;
+      padding-left: 1em;
+      padding-right: 1em;
+      border-style: solid;
+      border-left-width: 1em;
+      border-top-width: thin;
+      border-right-width: thin;
+      border-bottom-width: thin;
+      border-color: #95ABD0;
+      color: #000000;
+      background-color: #FFFFFF;
+    }
+
+    #container {
+      background: #fff;
+      margin: 20px auto;
+      padding: 10px 10px 1px;
+      text-align: left;
+      width: 1100px;
+    }
+
+    .header {
+      background: #d2d4d5;
+      clear: both;
+      margin: 0 0 10px;
+      padding: 10px;
+    }
+
+    .header h1 {
+      font-size: 1.8em;
+      letter-spacing: -1px;
+      margin: 0;
+      padding: 10px 0px 10px 0px;
+      color: #ffffff;
+    }
+
+    .header p {
+      font-size: 1.25em;
+      font-weight: 700;
+      margin: 0;
+      padding: 0 0 10px 10px;
+    }
+
+    .mainmenu {
+      clear: both;
+      margin: 0 0 10px;
+    }
+
+    .mainmenu ul {
+      background: #f0f0f0;
+      list-style: none;
+      width: 100%;
+    }
+
+    .mainmenu li {
+      float: left;
+      list-style: none;
+      margin: 0 0 10px;
+    }
+
+    .mainmenu li a {
+      background: #f0f0f0;
+      border-right: 10px solid #fff;
+      display: block;
+      float: left;
+      font-size: 1.1em;
+      font-weight: 700;
+      padding: 6px 10px;
+    }
+
+    .mainmenu li a:hover {
+      background: #f5e9d9;
+      display: block;
+      padding: 6px 10px;
+    }
+
+    .breadcrumbs {
+      background: #f0f0f0;
+      clear: both;
+      font-size: 1.1em;
+      font-weight: 700;
+      margin: 0 0 10px;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+    .breadcrumbs p {
+      margin: 0;
+    }
+
+    .headline {
+      border-left: 20px solid #d56e30;
+      clear: both;
+      margin: 0 0 10px;
+      padding: 0 10px;
+    }
+
+    .headline h1 {
+      margin: 0;
+    }
+
+    .singlecontent {
+      background: #f0f0f0;
+      border: 1px solid #000000;
+      clear: both;
+      line-height: 1.4em;
+      margin: 40px 0px 40px 0px;
+      padding: 10px 10px 10px 10px;
+    }
+
+    .doublecontent {
+      background: #f0f0f0;
+      clear: both;
+      line-height: 1.4em;
+      margin: 0 0 10px;
+      padding: 10px 10px 1px;
+    }
+
+    .doubleleft {
+      float: left;
+      width: 39%;
+    }
+
+    .doubleright {
+      float: right;
+      width: 57%;
+    }
+
+    .footer {
+      background: #f0f0e0;
+      clear: both;
+      color: gray;
+      margin: 0 0 10px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+
+    .clear {
+      clear: both;
+    }
+  </style>
+<style></style></head>
+
+<body>
+  <!-- Layout setting -->
+  <div id="container">
+
+    <!-- Header block -->
+    <div class="header">
+      <h1>CSE2030 Lab 04</h1>
+      <p>
+        Due: Nov 1 before 5:00PM
+      </p>
+    </div>
+    <!-- / Header block -->
+
+    <!-- Single content block -->
+    <div class="singlecontent">
+      <h2>Introduction</h2>
+
+      <p>
+        The purpose of this lab is to implement two classes that use
+        composition; one class is also a singleton. Both classes may appear
+        again in Lab 06 (graphical user interfaces).
+      </p>
+
+
+    </div>
+
+
+
+    <!-- Single content block -->
+    <div class="singlecontent">
+      <h2>The game Boggle™ </h2>
+
+      <p>
+        <img src="./EECS2030 Lab 04_files/dice.jpg" style="float:left; padding-right: 20px">
+        Boggle™ is a word game played with 16 dice each having 6 faces labelled
+        with a letter of the English alphabet. One die has a face labelled with
+        the string <code>QU</code>        to reflect the fact that
+        <code>Q</code> is usually followed by <code>U</code> in English words.
+      </p>
+
+      <p style="clear: both"></p>
+
+      <p>
+        <img src="./EECS2030 Lab 04_files/shake.jpg" style="float:left; padding-right: 20px">
+        To start a game of Boggle™, the dice are placed in a dome that covers
+        the game board and the dice are shaken to randomize where each dice
+        appears on the board and to randomize which face is up on each dice. The
+        game board is simply a 4-by-4 grid.
+      </p>
+
+      <p style="clear: both"></p>
+
+      <p>
+        <img src="./EECS2030 Lab 04_files/question.jpg" style="float:left; padding-right:
+        20px"> After shaking the dice and making sure that each die has settled
+        into one of the grid positions, the board is placed down and the dome
+        removed. A 3-minute timer is started. The players then search the
+        assortment of letters to find English words made up of three or more
+        letters. Words are formed from letters that adjoin horizontally,
+        vertically, or diagonally with no die being used more than once per
+        word. The image to the left shows an example of how the word
+        <code>QUESTIONS</code> can be formed. Other words that can be formed
+        include
+        <code>EASE</code>, <code>EAST</code>, <code>NOISES</code>,
+        <code>QUEST</code>, and <code>QUESTION</code>.
+      </p>
+
+      <p style="clear: both"></p>
+
+      <p>
+        <img src="./EECS2030 Lab 04_files/inconsequentially.jpg" style="float:left;
+        padding-right: 20px"> The longest words that can be formed have 17
+        letters; the image to the left shows how <code>INCONSEQUENTIALLY</code>
+        can be formed.
+      </p>
+
+      <p style="clear: both"></p>
+
+    </div>
+
+    <!-- Single content block -->
+    <div class="singlecontent">
+      <h2>Implementing Boggle™ as a Java program</h2>
+
+      <p>
+        In this lab, students will create 3 essential classes for implementing
+        Boggle™ as a Java program. The completed program has the following
+        appearance when run:
+      </p>
+
+      <p>
+        <img src="./EECS2030 Lab 04_files/app.png">
+      </p>
+
+      <p>
+        Our Boggle™ app has many features:
+      </p>
+
+      <ul>
+        <li>The player starts the game by pressing the <b>Re-roll</b> button.
+        This causes the dice to be shaken and rolled randomly.
+        </li>
+        <li>It uses buttons to represent the dice; the user clicks on the
+        buttons to form words. When the player clicks on a button, the button
+        background is set to blue and the button is disabled so that the button
+        can only be used once per word. Also, all of the other buttons not
+        adjacent to the last clicked button are disabled; in this way the player
+        is forced to use letters that form a connected path. In the image above,
+        the last button pressed was the
+          <b>E</b>; we can see that only the <b>N</b> and the <b>C</b> buttons
+          are enabled (black text).
+        </li>
+        <li>As the player clicks on the dice buttons, the word being formed is
+        shown in the text field at the bottom middle; in the image above, the
+        user is currently spelling the word <b>DOUSE</b>.
+        </li>
+        <li>The player presses the <b>Submit</b> button when they are finished
+        spelling the word. The word is checked to see if it is spelled correctly
+        and is at least 3 letters long; if both of these are true, then the word
+        is added to the list of correct words. Otherwise, the word is added to
+        the list of incorrect words. In either case, the word is cleared from
+        the text field, and all of the buttons are enabled and set to white so
+        that the player can enter the next word.
+        </li>
+      </ul>
+
+      <p>
+        You can play the Boggle™ app in the Prism lab using the command:
+      </p>
+
+      <pre>java -jar /cse/dept/www/course/2030/labs/lab4/BoggleApp.jar
+</pre>
+
+      <p>
+        Ignoring the user interface, we can identify three components needed to
+        implement a Java version of Boggle™:
+      </p>
+
+      <ol>
+        <li>
+          dice whose faces are decorated with a string
+        </li>
+        <li>
+          a dictionary to determine if a word has been spelled correctly
+        </li>
+        <li>
+          a component that models how the game of Boggle™ is played
+        </li>
+      </ol>
+
+      <p>
+        In this lab, students will create these components by implementing three
+        classes:
+      </p>
+
+      <ol>
+        <li>
+          <code>Die</code>: A class that represents an n-sided die that can be
+          rolled to display a random face. Each face of the die is decorated
+          with a string. A <code>Die</code> is a composition of a
+          <code>SortedMap</code> that stores which string is associated with
+          each face of the die.
+        </li>
+        <li>
+          <code>Dictionary</code>: A class that represents a dictionary of
+          English words. A <code>Dictionary</code> is a composition of a
+          <code>SortedSet</code> strings (the words in the dictionary).
+        </li>
+        <li>
+          <code>Boggle</code>: A class that models how the game of Boggle™ is
+          played. A <code>Boggle</code> object is a composition of 16
+          <code>Die</code> objects (the 16 dice used in the game) and a
+          composition of a <code>Dictionary</code>.
+        </li>
+      </ol>
+
+    </div>
+
+    <!-- Single content block -->
+    <div class="singlecontent">
+      <h2>Programming question</h2>
+
+      <p>&nbsp;</p>
+
+      <h3>Getting started</h3>
+
+      <ol>
+        <li>
+          <a href="https://www.eecs.yorku.ca/course_archive/2017-18/F/2030/labs/lab4/lab4.zip">Download this zip file containing the Lab 4
+          eclipse project.</a>
+        </li>
+        <li>
+          Import the project into eclipse by doing the following:
+          <ol>
+            <li>Under the <b>File</b> menu choose <b>Import...</b>
+            </li>
+
+            <li>Under <b>General</b> choose <b>Existing Projects into
+            Workspace</b> and press <b>Next</b>
+            </li>
+
+            <li>Click the <b>Select archive file</b> radio button, and click the
+            <b>Browse...</b> button.
+            </li>
+
+            <li>In the file browser that appears, navigate to your download
+            directory (exactly where this is depends on what computer you
+            working on; on the lab computers the file will probably appear in
+            your home directory)
+            </li>
+
+            <li>Select the file <b>lab4.zip</b> and click <b>OK</b>
+            </li>
+
+            <li>Click <b>Finish</b>.
+          </li></ol>
+          </li>
+          <li>
+            Implement the three classes <code>Die</code>, <code>Dictionary</code>,
+            and <code>Boggle</code> (in that order). See the hints for implementing
+            these classes below. <a href="https://www.eecs.yorku.ca/course_archive/2017-18/F/2030/labs/lab4/Lab4.api/index.html">The API for the 
+            classes can be found here.</a>
+          </li>
+          <li>
+            When all three classes are implemented you can run
+            <code>BoggleApp.java</code> to play a game of Boggle™.
+          </li>
+      </ol>
+      <p>&nbsp;</p>
+
+      <h3>Hints for implementing the Die class</h3>
+
+      <p>
+        Rolling a <code>Die</code> to a random face of the die requires
+        generating a random value. <code>java.util.Random</code> can
+        easily be used to generate random integer values within a specified
+        range, but our die faces are labelled with strings. One solution is to
+        assign each face a unique integer value and map that value to the string
+        on the face. Your solution should number the faces of the die 1, 2, 3,
+        ..., n where n is the number of faces on the die, and store the face
+        number and corresponding face string in a <code>SortedMap</code>. For
+        example, consider a 4-sided die with faces labelled <code>"E"</code>,
+        <code>"E"</code>, <code>"C"</code>, <code>"S"</code>; the <code>Die</code>
+        object representing such a die might have the following map:
+      </p>
+
+      <table>
+        <tbody><tr>
+          <th>Key&nbsp;&nbsp;&nbsp;</th>
+          <th>Value</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>"E"</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>"E"</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>"C"</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>"S"</td>
+        </tr>
+      </tbody></table>
+
+      <p>
+        <code>Die</code> is a composition of a <code>SortedMap</code>;
+        any constructor or method that might leak a reference to the map 
+        must make a defensive copy of the map.
+        The <code>Die</code> constructor should create and initialize the map
+        given an array of strings specifying the strings for the faces.
+      </p>
+
+      <p>
+        A field for the map is already in the provided <code>Die.java</code>
+        file. You may find that you require additional fields as you implement
+        the various methods; don't forget to initialize these fields to
+        reasonable values in the constructor.
+      </p>
+
+      <h3>Hints for implementing the Dictionary class</h3>
+
+      <p>
+        The <code>Dictionary</code> class uses a <code>SortedSet</code>
+        to store the words of the dictionary. We use a set to prevent
+        storing duplicate words. We use a sorted set because certain
+        dictionary operations can be implemented more efficiently if 
+        a sorted set is used instead of an unsorted set (although it
+        is not a requirement that students exploit the possible 
+        efficiencies). <code>Dictionary</code> is a composition of a 
+        <code>SortedSet</code>; any constructor or method that might leak
+        a reference to the set must make a defensive copy of the set.
+      </p>
+
+      <p>
+        The dictionary reads in the words of the dictionary from a 
+        file named <code>dictionary.txt</code> that has been provided
+        to you. The file contains
+        370,101 English words in all lower case. A method that reads
+        the file has also been provided for you. Note that the dictionary
+        file contains many acronyms and abbreviations that would not
+        normally be accepted as proper words.
+      </p>
+
+      <h3>Hints for implementing the Boggle class</h3>
+
+      <p>
+        The <code>Boggle</code> class is a composition of a <code>Dictionary</code>
+        and a <code>List</code> of 16 <code>Die</code> objects; any constructor
+        or method that might leak a reference to the <code>Dictionary</code>
+        or the <code>List</code> of dice must make a defensive copy of
+        the <code>Dictionary</code> or the <code>List</code>.
+      </p>
+
+      <p>
+        The <code>Boggle</code> constructor should create a dictionary and
+        a list to store the dice; it should populate the list with 16 dice.
+        The strings to label the 16 dice are provided to you in the 
+        file <code>Boggle.java</code> as a 2-dimensional array named
+        <code>LETTERS</code>.
+      </p>
+
+      <p>
+        You can get the 1-dimensional array containing the strings for 
+        the faces of the first die by writing:
+      </p>
+
+      <pre>String[] faces = Boggle.LETTERS[0];
+</pre>
+
+      <p>
+        In the above example, <code>Boggle.LETTERS[0]</code> is the first
+        element of the 2-dimensional array <code>LETTERS</code>; the first 
+        element is itself an array of six strings. Similarly,
+        <code>Boggle.LETTERS[1]</code> is the array of six strings for 
+        the faces of the second die, and
+        <code>Boggle.LETTERS[2]</code> is the array of six strings for 
+        the faces of the third die.
+      </p>
+        
+      <p>
+        Creating 16 dice can be done by writing a loop:
+      </p>
+
+      <pre>for (int i = 0; i &lt; Boggle.NUMBER_OF_DICE; i++) {
+    String[] faces = Boggle.LETTERS[i];
+    // make a Die using faces here
+    // add the die to your list here
+}
+</pre>
+    </div>
+
+
+    <!-- Single content block -->
+    <div class="singlecontent">
+      <h2>Submit for students NOT working in a group</h2>
+
+      <p>
+        If you are <i>not</i> working in a group, submit your solution using the
+        <code>submit</code> command. Remember that you first need to find your
+        workspace directory, then you need to find your project directory. In
+        your project directory, your files will be located in the directory
+        <code>src/eecs2030/lab3</code></p>
+
+      <pre>  submit 2030 lab4 Boggle.java Dictionary.java Die.java
+  </pre>
+
+    </div>
+
+    <!-- Single content block -->
+    <div class="singlecontent">
+      <h2>Submit for students working in a group</h2>
+      <p>
+        <b>Students working in a group should submit only one submission for the
+        entire group.</b> If you are working in a group, create a plain text
+        file named
+        <code>group.txt</code>. You can do this in eclipse using the menu
+        <i>File -&gt; New -&gt; File</i>. Type your login names into the file with
+        each login name on its own line. For example, if the students with login
+        names
+        <code>rey</code>, <code>finn</code>, and <code>dameronp</code>, worked
+        in a group the contents of <code>group.txt</code>        would be:
+      </p>
+
+      <pre>  rey finn dameronp
+  </pre>
+
+      <p>Submit your solution using the <code>submit</code> command. Remember
+      that you first need to find your workspace directory, then you need to
+      find your project directory. In your project directory, your files will be
+      located in the directory
+        <code>src/eecs2030/lab1</code></p>
+
+      <pre>  submit 2030 lab4 Boggle.java Dictionary.java Die.java group.txt
+  </pre>
+
+    </div>
+
+    <!-- Single content block -->
+    <div class="singlecontent">
+      <h2>Submit your work from outside the Prism lab</h2>
+
+      <p>
+        It is possible to submit work from outside the Prism lab, but the
+        process is not trivial; do not attempt to do so at the last minute if
+        the process is new to you. The process for submitting from outside of
+        the Prism lab involves the following steps:
+      </p>
+
+      <ol>
+        <li>transfer the files from your computer to the undergraduate EECS
+        server red.eecs.yorku.ca
+        </li>
+        <li>remotely log in to your EECS account
+        </li>
+        <li>submit your newly transferred files in your remote login session
+        using the instructions for submitting from within the lab
+        </li>
+        <li>repeat Steps 1 and 3 as required
+        </li>
+      </ol>
+
+      <p>
+        Windows users will likely need to install additional software first. Mac
+        users have all of the required software as part of MacOS.
+      </p>
+
+      <p>
+        <a href="https://wiki.eecs.yorku.ca/course_archive/2016-17/F/2030/howto_submit">Detailed
+        instructions are here.</a>
+      </p>
+
+    </div>
+
+
+
+    <!-- Footer block -->
+    <div class="footer">
+      <p>Burton Ma | Template design by <a href="http://andreasviklund.com/">Andreas Viklund</a></p>
+    </div>
+    <!-- / Footer block -->
+
+  </div>
+  <!-- / Layout setting -->
+
+
+
+
+
+</body></html>
